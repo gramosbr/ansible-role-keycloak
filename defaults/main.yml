@@ -1,0 +1,8 @@
+---
+keycloak_admin_username: admin
+keycloak_download_url: "https://downloads.jboss.org/keycloak/{{ keycloak_version }}/keycloak-{{ keycloak_version }}.tar.gz"
+keycloak_group: keycloak
+keycloak_home: /opt/keycloak
+keycloak_user: keycloak
+# Get latest version from here: https://www.keycloak.org/downloads.html
+keycloak_version: 3.4.3.Final

@@ -1,0 +1,13 @@
+---
+- name: Restart keycloak
+  service:
+    name: keycloak
+    state: restarted
+  become: yes
+
+- name: Reload systemd
+  command: systemctl daemon-reload
+  become: yes
+  when:
+    - ansible_os_family == "RedHat"
+    - ansible_distribution_major_version >= "7"
