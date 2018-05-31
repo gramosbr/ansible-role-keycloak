@@ -1,10 +1,19 @@
 ---
 - name: Use /dev/urandom for Java
   replace:
+    dest: /usr/lib/jvm/java-{{ keycloak_java_version }}-openjdk-amd64/jre/lib/security/java.security
+    regexp: '^securerandom.source.*'
+    replace: 'securerandom.source=file:/dev/./urandom'
+  become: yes
+  when: ansible_os_family == "Debian"
+
+- name: Use /dev/urandom for Java
+  replace:
     dest: /usr/lib/jvm/jre/lib/security/java.security
     regexp: '^securerandom.source.*'
     replace: 'securerandom.source=file:/dev/./urandom'
   become: yes
+  when: ansible_os_family == "RedHat"
 
 - name: Copy keycloak service
   template:
@@ -13,9 +22,6 @@
     owner: root
     group: root
   become: yes
-  when:
-    - ansible_os_family == "RedHat"
-    - ansible_distribution_major_version >= "7"
   notify:
     - Reload systemd
 

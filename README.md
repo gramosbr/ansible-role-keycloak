@@ -7,6 +7,11 @@ Ansible role for Keycloak
 - Creates an admin user
 
 
+### Requirements
+
+- The target host must have systemd installed (e.g. CentOS/RHEL 7+, Debian 8+, Ubuntu 15.04+)
+
+
 ### Instructions
 
 Include the role and define any variables as described below

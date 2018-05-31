@@ -1,15 +1,17 @@
 ---
-- name: Install OpenJDK Java {{ keycloak_java_version }} JRE
-  yum:
-    name: java-1.{{ keycloak_java_version }}.0-openjdk
+- name: Install OpenJDK Java {{ keycloak_java_version }} JDK
+  apt:
+    name: openjdk-{{ keycloak_java_version }}-jdk
     state: present
   become: yes
+  when: ansible_os_family == "Debian"
 
 - name: Install OpenJDK Java {{ keycloak_java_version }} JDK
   yum:
     name: java-1.{{ keycloak_java_version }}.0-openjdk-devel
     state: present
   become: yes
+  when: ansible_os_family == "RedHat"
 
 - name: Create keycloak group
   group:
