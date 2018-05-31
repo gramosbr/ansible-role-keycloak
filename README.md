@@ -22,7 +22,9 @@ Include the role and define any variables as described below
 - `keycloak_group` (optional)
     - Default value: keycloak
 - `keycloak_home` (optional)
-    - Default value: /opt/app/keycloak
+    - Default value: /opt/keycloak
+- `keycloak_java_version` (optional)
+    - Default value: 8
 - `keycloak_user` (optional)
     - Default value: keycloak
 - `keycloak_version` (optional)

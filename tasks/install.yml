@@ -1,4 +1,16 @@
 ---
+- name: Install OpenJDK Java {{ keycloak_java_version }} JRE
+  yum:
+    name: java-1.{{ keycloak_java_version }}.0-openjdk
+    state: present
+  become: yes
+
+- name: Install OpenJDK Java {{ keycloak_java_version }} JDK
+  yum:
+    name: java-1.{{ keycloak_java_version }}.0-openjdk-devel
+    state: present
+  become: yes
+
 - name: Create keycloak group
   group:
     name: "{{ keycloak_group }}"
